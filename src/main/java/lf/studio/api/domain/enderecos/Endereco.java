@@ -1,4 +1,4 @@
-package lf.studio.api.domain;
+package lf.studio.api.domain.enderecos;
 
 import jakarta.persistence.Embeddable;
 

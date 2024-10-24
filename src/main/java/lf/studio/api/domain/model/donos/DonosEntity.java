@@ -1,7 +1,7 @@
 package lf.studio.api.domain.model.donos;
 
 import jakarta.persistence.*;
-import lf.studio.api.domain.Endereco;
+import lf.studio.api.domain.enderecos.Endereco;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

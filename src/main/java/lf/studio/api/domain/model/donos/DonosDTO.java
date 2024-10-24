@@ -5,7 +5,7 @@ package lf.studio.api.domain.model.donos;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lf.studio.api.domain.DadosEnderecoDTO;
+import lf.studio.api.domain.enderecos.DadosEnderecoDTO;
 
 public record DonosDTO(
 
