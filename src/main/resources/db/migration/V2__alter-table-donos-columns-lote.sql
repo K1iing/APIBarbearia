@@ -1,0 +1,1 @@
+alter table donos add lote varchar(20) not null;
