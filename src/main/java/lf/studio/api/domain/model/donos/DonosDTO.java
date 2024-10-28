@@ -10,10 +10,7 @@ import lf.studio.api.domain.enderecos.DadosEnderecoDTO;
 public record DonosDTO(
 
 
-        @NotBlank
-        String nome,
-        @NotBlank
-        String senha,
+
         @NotBlank
         String lote,
         @NotNull

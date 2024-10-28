@@ -20,9 +20,7 @@ public class DonosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nome;
 
-    private String senha;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
@@ -44,13 +42,7 @@ public class DonosEntity {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
 
 
@@ -66,14 +58,6 @@ public class DonosEntity {
         return id;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
 
 
     public Endereco getEndereco() {
@@ -85,8 +69,6 @@ public class DonosEntity {
     }
 
     public DonosEntity(DonosDTO donos) {
-        this.nome = donos.nome();
-        this.senha = donos.senha();
         this.lote = donos.lote();
         this.especialidade = donos.especialidade();
         this.endereco = new Endereco(donos.endereco());

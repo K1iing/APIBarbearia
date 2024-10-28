@@ -6,13 +6,13 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record ClienteDTO(
-        @NotBlank
+        @NotBlank(message = "O nome não pode ser vazio")
         String nome,
 
         LocalDate data,
-        @NotNull
+        @NotNull(message = "O serviço, não pode ser nulo")
         ServicosCliente servicos,
-        @NotBlank
+        @NotBlank(message = "O telefone não pode ser vazio")
         String telefone
 
 

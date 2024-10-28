@@ -1,0 +1,2 @@
+ALTER TABLE donos DROP COLUMN nome;
+ALTER TABLE donos DROP COLUMN senha;

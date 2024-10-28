@@ -1,0 +1,2 @@
+ALTER TABLE usuarios DROP COLUMN nome;
+ALTER TABLE usuarios ADD COLUMN login VARCHAR(255);
