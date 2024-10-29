@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
+//tem que implementar esse DetailsService por que ele vai puxar o Login para logar.
 @Service
 public class AutenticaoService implements UserDetailsService {
 
