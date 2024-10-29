@@ -35,7 +35,7 @@ public class SecurityConfigurate {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/cadastrar").permitAll()// Permitir acesso ao endpoint de login
+                        .requestMatchers(HttpMethod.POST,"/cadastrar").permitAll()
                         .anyRequest().authenticated() // Requerer autenticação para todas as outras requisições
                 )
                 .addFilterBefore(filtro, UsernamePasswordAuthenticationFilter.class) // Adicionando seu filtro

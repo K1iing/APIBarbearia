@@ -1,106 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Clientes</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>API Test</title>
 </head>
 <body>
-<div class="container">
-    <h1>Gerenciamento de Clientes</h1>
+<h1>Teste de API com Token JWT</h1>
+<form id="apiForm">
+    <input type="text" id="tokenInput" placeholder="Digite seu Token JWT" required>
+    <button type="submit">Enviar</button>
+</form>
+<pre id="responseOutput"></pre>
 
-    <form id="clienteForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+<script>
+    document.getElementById('apiForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const token = document.getElementById('tokenInput').value;
 
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" required>
-
-        <label for="data">Data de Cadastro:</label>
-        <input type="date" id="data" name="data" required>
-
-        <label for="servico">Serviço:</label>
-        <select id="servico" name="servico" required>
-            <option value="">Selecione um serviço</option>
-            <option value="CORTE_SIMPLES">Corte Simples</option>
-            <option value="SOMBRANCELHA">Sobrancelha</option>
-            <option value="ESCOVA">Escova</option>
-            <option value="PROGRESSIVA">Progressiva</option>
-            <option value="RECONSTRUCAO">Reconstrução</option>
-            <option value="HIDRATACAO">Hidratação</option>
-            <option value="MASSAGEM_CAPILAR">Massagem Capilar</option>
-            <option value="APLIQUE_MEGA">Aplique Mega</option>
-            <option value="MEGA_MANUTENCAO">Mega Manutenção</option>
-            <option value="DESCOLORACAO">Descoloração</option>
-            <option value="ESCOVA_CHAPINHA">Escova Chapinha</option>
-            <option value="CORTE_FEMININO">Corte Feminino</option>
-            <option value="UNHA_GEL">Unha Gel</option>
-            <option value="UNHA_PORCELANA">Unha Porcelana</option>
-            <option value="UNHA_ACRILICO">Unha Acrílico</option>
-            <option value="UNHA_FIBRAVIDRO">Unha Fibra de Vidro</option>
-            <option value="UNHA_POSTICA">Unha Postiça</option>
-            <option value="MOLDE_F1">Molde F1</option>
-            <option value="MANUTENCAO">Manutenção</option>
-            <option value="SPA_PE">SPA para Pés</option>
-            <option value="PE_MAO">SPA para Mãos</option>
-        </select>
-
-        <button type="submit">Cadastrar Cliente</button>
-    </form>
-
-    <h2>Atualizar Cliente</h2>
-    <form id="atualizarForm">
-        <label for="atualizarId">ID:</label>
-        <input type="number" id="atualizarId" required>
-
-        <label for="atualizarNome">Nome:</label>
-        <input type="text" id="atualizarNome">
-
-        <label for="atualizarTelefone">Telefone:</label>
-        <input type="text" id="atualizarTelefone">
-
-        <label for="atualizarServico">Serviço:</label>
-        <select id="atualizarServico">
-            <option value="">Selecione um serviço</option>
-            <option value="CORTE_SIMPLES">Corte Simples</option>
-            <option value="SOMBRANCELHA">Sobrancelha</option>
-            <option value="ESCOVA">Escova</option>
-            <option value="PROGRESSIVA">Progressiva</option>
-            <option value="RECONSTRUCAO">Reconstrução</option>
-            <option value="HIDRATACAO">Hidratação</option>
-            <option value="MASSAGEM_CAPILAR">Massagem Capilar</option>
-            <option value="APLIQUE_MEGA">Aplique Mega</option>
-            <option value="MEGA_MANUTENCAO">Mega Manutenção</option>
-            <option value="DESCOLORACAO">Descoloração</option>
-            <option value="ESCOVA_CHAPINHA">Escova Chapinha</option>
-            <option value="CORTE_FEMININO">Corte Feminino</option>
-            <option value="UNHA_GEL">Unha Gel</option>
-            <option value="UNHA_PORCELANA">Unha Porcelana</option>
-            <option value="UNHA_ACRILICO">Unha Acrílico</option>
-            <option value="UNHA_FIBRAVIDRO">Unha Fibra de Vidro</option>
-            <option value="UNHA_POSTICA">Unha Postiça</option>
-            <option value="MOLDE_F1">Molde F1</option>
-            <option value="MANUTENCAO">Manutenção</option>
-            <option value="SPA_PE">SPA para Pés</option>
-            <option value="PE_MAO">SPA para Mãos</option>
-        </select>
-
-        <button type="submit">Atualizar Cliente</button>
-    </form>
-
-    <h2>Listar Clientes</h2>
-    <button id="listarClientes">Listar Clientes</button>
-    <div id="listaClientes"></div>
-
-    <h2>Desativar/Ativar Cliente</h2>
-    <label for="idAtivarDesativar">ID:</label>
-    <input type="number" id="idAtivarDesativar" required>
-    <button id="desativarCliente">Desativar</button>
-    <button id="ativarCliente">Ativar</button>
-
-    <div id="message"></div>
-</div>
-<script src="script.js"></script>
+        fetch('http://localhost:8080', {
+            method: 'GET', // ou 'POST', dependendo do seu endpoint
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('responseOutput').innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+            document.getElementById('responseOutput').innerText = 'Error: ' + error.message;
+        });
+    });
+</script>
 </body>
 </html>
